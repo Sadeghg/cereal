@@ -13,4 +13,6 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(name = "company_name", columnDefinition = "TEXT")
+    private String name;
 }

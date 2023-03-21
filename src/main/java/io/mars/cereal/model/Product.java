@@ -12,7 +12,7 @@ public class Product {
     @Id
     @SequenceGenerator(name = "cuteSequence", sequenceName = "cuteSequence"
             , initialValue = 1, allocationSize = 10)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "product_name", columnDefinition = "TEXT")

@@ -21,6 +21,8 @@ public class Product {
     @Column(name = "product_price", nullable = false)
     private Double price;
 
+    @JoinColumn(name = "company_id", foreignKey = @ForeignKey(name = "company_fk_id"), nullable = false)
+
     @ElementCollection
     @CollectionTable(name = "product_details",
             joinColumns = {@JoinColumn(

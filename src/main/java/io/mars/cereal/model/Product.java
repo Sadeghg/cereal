@@ -10,6 +10,8 @@ import java.util.Map;
 public class Product {
 
     @Id
+    @SequenceGenerator(name = "cuteSequence", sequenceName = "cuteSequence"
+            , initialValue = 1, allocationSize = 10)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

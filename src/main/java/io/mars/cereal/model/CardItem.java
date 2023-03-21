@@ -13,6 +13,9 @@ public class CardItem {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(name = "item_quantity", nullable = false)
+    private Integer quantity;
+
     @JoinColumn(name = "card_id", foreignKey = @ForeignKey(name = "card_fk_id"))
     @ManyToOne(fetch = FetchType.EAGER)
     private Card card;

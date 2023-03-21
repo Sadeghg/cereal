@@ -12,4 +12,8 @@ public class Shop {
             , initialValue = 1, allocationSize = 10)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cuteSequence")
     private Long id;
+
+    private String name;
+    
+    private String description;
 }

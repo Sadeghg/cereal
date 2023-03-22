@@ -22,6 +22,8 @@ public class Product {
     private Double price;
 
     @JoinColumn(name = "company_id", foreignKey = @ForeignKey(name = "company_fk_id"), nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Company company;
 
     @ElementCollection
     @CollectionTable(name = "product_details",

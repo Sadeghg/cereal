@@ -1,6 +1,7 @@
 package io.mars.cereal;
 
 import io.mars.cereal.controller.ProductController;
+import io.mars.cereal.controller.specification.ProductEndpoint;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -9,6 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class ProductControllerTest {
 
     @Mock
-    private ProductController controller;
+    private ProductEndpoint endpoint;
 
 }

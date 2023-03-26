@@ -19,4 +19,9 @@ public class ProductController implements ProductEndpoint {
     public ResponseEntity<Product> createProduct(String name, Double price, String companyName) {
         return null;
     }
+
+    @Override
+    public ResponseEntity<Product> updateProduct(String name, Double price, String companyName) {
+        return null;
+    }
 }

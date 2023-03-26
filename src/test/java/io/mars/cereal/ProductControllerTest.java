@@ -5,7 +5,6 @@ import io.mars.cereal.model.Company;
 import io.mars.cereal.model.Product;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -45,16 +44,14 @@ public class ProductControllerTest {
 
     @Test
     public void findByIdSuccess(){
-
-
         when(endpoint.findById(anyLong())).thenReturn(ResponseEntity.ok(product));
-
-        assertTrue(endpoint.findById(anyLong()).hasBody());
-        assertEquals(product.getId(), endpoint.findById(anyLong()).getBody().getId());
+        Product result = endpoint.findById(anyLong()).getBody();
+        assertNotNull(result);
+        assertEquals(product.getId(), result.getId());
         assertEquals(product.getDetails().entrySet().size(),
-                endpoint.findById(anyLong()).getBody().getDetails().entrySet().size());
+                result.getDetails().entrySet().size());
         assertEquals(product.getCompany().getName(),
-                endpoint.findById(anyLong()).getBody().getCompany().getName());
+                result.getCompany().getName());
     }
 
     @Test
@@ -66,12 +63,11 @@ public class ProductControllerTest {
     @Test
     public void createProduct(){
         when(endpoint.createProduct(anyString(), anyDouble(), anyString())).thenReturn(ResponseEntity.ok(product));
-        assertTrue(endpoint.createProduct(anyString(), anyDouble(), anyString()).hasBody());
-        assertEquals(product.getId(), endpoint.createProduct(anyString(), anyDouble(), anyString()).getBody().getId());
-        assertEquals(product.getDetails().entrySet().size(),
-                endpoint.createProduct(anyString(), anyDouble(), anyString()).getBody().getDetails().entrySet().size());
+        Product result = endpoint.createProduct(anyString(), anyDouble(), anyString()).getBody();
+        assertNotNull(result);
+        assertEquals(product.getId(), result.getId());
         assertEquals(product.getCompany().getName(),
-                endpoint.createProduct(anyString(), anyDouble(), anyString()).getBody().getCompany().getName());
+                result.getCompany().getName());
     }
 
 }

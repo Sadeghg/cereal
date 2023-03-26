@@ -14,4 +14,9 @@ public class ProductController implements ProductEndpoint {
     public ResponseEntity<Product> findById(Long id) {
         return null;
     }
+
+    @Override
+    public ResponseEntity<Product> createProduct(String name, Double price, String companyName) {
+        return null;
+    }
 }

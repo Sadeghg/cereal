@@ -7,4 +7,6 @@ public interface ProductEndpoint {
 
     public ResponseEntity<Product> findById(Long id);
 
+    public ResponseEntity<Product> createProduct(String name, Double price, String companyName);
+
 }

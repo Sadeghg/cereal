@@ -77,7 +77,7 @@ public class ProductControllerTest {
         Product toBeReturned = new Product();
         toBeReturned.setId(product.getId());
         toBeReturned.setName("Home TV");
-        toBeReturned.setPrice(4g70D);
+        toBeReturned.setPrice(470D);
 
         when(endpoint.updateProduct(anyLong(), anyString(), anyDouble(), anyString()))
                 .thenReturn(ResponseEntity.ok(toBeReturned));

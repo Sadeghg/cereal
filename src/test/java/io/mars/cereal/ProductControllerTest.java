@@ -5,6 +5,7 @@ import io.mars.cereal.model.Company;
 import io.mars.cereal.model.Product;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -21,9 +22,10 @@ public class ProductControllerTest {
     @Mock
     private ProductEndpoint endpoint;
 
-    private final Product product = product();
+    private Product product;
 
-    public static Product product(){
+    @BeforeEach
+    public void product(){
         Company lg = new Company();
         lg.setName("LG");
         lg.setId(1L);
@@ -39,7 +41,7 @@ public class ProductControllerTest {
         tv.setCompany(lg);
         tv.setPrice(500D);
         tv.setId(2L);
-        return tv;
+        this.product = tv;
     }
 
     @Test

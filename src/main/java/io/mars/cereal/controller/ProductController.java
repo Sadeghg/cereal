@@ -24,4 +24,9 @@ public class ProductController implements ProductEndpoint {
     public ResponseEntity<Product> updateProduct(Long id, String name, Double price, String companyName) {
         return null;
     }
+
+    @Override
+    public void deleteProduct(Long id) {
+
+    }
 }

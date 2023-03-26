@@ -72,4 +72,20 @@ public class ProductControllerTest {
                 result.getCompany().getName());
     }
 
+    @Test
+    public void updateProduct(){
+        Product toBeReturned = new Product();
+        toBeReturned.setId(product.getId());
+        toBeReturned.setName("Home TV");
+        toBeReturned.setPrice(4g70D);
+
+        when(endpoint.updateProduct(anyLong(), anyString(), anyDouble(), anyString()))
+                .thenReturn(ResponseEntity.ok(toBeReturned));
+        Product result = endpoint.updateProduct(anyLong(), anyString(), anyDouble(), anyString()).getBody();
+        assertNotNull(result);
+        assertEquals(product.getId(), result.getId());
+        assertNotEquals(product.getPrice(), result.getPrice());
+        assertNotEquals(product.getName(), result.getName());
+    }
+
 }

@@ -88,4 +88,9 @@ public class ProductControllerTest {
         assertNotEquals(product.getName(), result.getName());
     }
 
+    @Test
+    public void deleteProduct(){
+        // todo
+    }
+
 }

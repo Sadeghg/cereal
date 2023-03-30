@@ -2,10 +2,7 @@ package io.mars.cereal.controller;
 
 import io.mars.cereal.model.Product;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/product/")
@@ -16,7 +13,8 @@ public class ProductController {
         return null;
     }
 
-    public ResponseEntity<Product> createProduct(String name, Double price, String companyName) {
+    @PostMapping
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return null;
     }
 

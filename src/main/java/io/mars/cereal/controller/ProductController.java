@@ -23,7 +23,8 @@ public class ProductController {
         return null;
     }
 
-    public void deleteProduct(Long id) {
+    @DeleteMapping("delete/{id}")
+    public void deleteProduct(@PathVariable  Long id) {
 
     }
 }

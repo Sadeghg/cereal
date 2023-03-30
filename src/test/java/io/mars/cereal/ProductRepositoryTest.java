@@ -13,7 +13,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.Mockito.*;
 
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.Answer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -92,5 +94,16 @@ public class ProductRepositoryTest {
         assertEquals(result.get().getId(), product.getId());
         assertNotEquals(result.get().getPrice(), product.getPrice());
         assertNotEquals(result.get().getCompany().getId(), product.getCompany().getId());
+    }
+
+    @Test
+    void deleteById(){
+        //given
+
+        //when
+
+        //then
+        repository.deleteById(anyLong());
+        verify(repository).deleteById(anyLong());
     }
 }

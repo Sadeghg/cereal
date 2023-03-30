@@ -29,9 +29,9 @@ public class ProductRepositoryTest {
 
     @BeforeEach
     public void setRepository(){
-        Company lg = new Company("LG");
-        Company sony = new Company("SONY");
-        Company apple = new Company("Apple");
+        Company lg = new Company(40L,"LG");
+        Company sony = new Company(50L, "SONY");
+        Company apple = new Company(60L, "Apple");
 
         Map<String, String> tvDetails =
                 Map.of("weight", "2 kg", "original", "yes", "power", "130");
@@ -74,5 +74,23 @@ public class ProductRepositoryTest {
         assertTrue(result.isPresent());
         assertEquals(result.get().getDetails().size() , 3);
         assertEquals(result.get().getName(), product.getName());
+    }
+
+    @Test
+    public void updateProduct(){
+        //given
+        Product product = products.get(0);
+        Company sony = new Company(50L , "SONY");
+
+        //when
+        Product updateProduct = new Product(product.getId(), product.getName(), 600D, sony, product.getDetails());
+        when(repository.save(any(Product.class))).thenReturn(Optional.of(updateProduct));
+
+        //then
+        Optional<Product> result = repository.save(updateProduct);
+        assertTrue(result.isPresent());
+        assertEquals(result.get().getId(), product.getId());
+        assertNotEquals(result.get().getPrice(), product.getPrice());
+        assertNotEquals(result.get().getCompany().getId(), product.getCompany().getId());
     }
 }

@@ -1,4 +1,4 @@
 package io.mars.cereal.service.generic;
 
-public interface GenericService {
+public interface GenericService <T, ID>{
 }

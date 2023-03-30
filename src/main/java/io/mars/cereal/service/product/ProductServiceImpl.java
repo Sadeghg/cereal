@@ -45,5 +45,20 @@ public class ProductServiceImpl implements ProductService {
         return repository.findAll(ids);
     }
 
+    @Override
+    public void deleteAll(Collection<Long> ids) {
+        repository.deleteAll(ids);
+    }
+
+    @Override
+    public void deleteAll(Long... ids) {
+        repository.deleteAll(ids);
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
 
 }

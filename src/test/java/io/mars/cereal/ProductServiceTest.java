@@ -162,4 +162,37 @@ public class ProductServiceTest {
         assertEquals(resultList.size(), products.size());
     }
 
+    @Test
+    public void deleteProduct(){
+        //given
+
+        //when
+
+        //then
+        productService.delete(anyLong());
+        verify(repository).deleteById(anyLong());
+    }
+
+    @Test
+    public void deleteAll(){
+        //given
+
+        //when
+
+        //then
+        productService.deleteAll(List.of(50L, 60L));
+        verify(repository).deleteAll(List.of(50L, 60L));
+    }
+
+    @Test
+    public void deleteAllItems(){
+        //given
+
+        //when
+
+        //then
+        productService.deleteAll(50L, 60L);
+        verify(repository).deleteAll(50L, 60L);
+    }
+
 }

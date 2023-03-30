@@ -9,4 +9,7 @@ public interface GenericService <T, ID>{
     Collection<T> saveAll(Collection<T> t);
 
     Collection<T> saveAll(T... t);
+
+    T findById(ID id);
+
 }

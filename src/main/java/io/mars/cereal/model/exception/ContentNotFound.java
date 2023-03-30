@@ -10,6 +10,6 @@ import org.springframework.http.HttpStatus;
 public class ContentNotFound extends RuntimeException {
 
     private final String message;
-    private HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+    private final HttpStatus httpStatus = HttpStatus.NOT_FOUND;
 
 }

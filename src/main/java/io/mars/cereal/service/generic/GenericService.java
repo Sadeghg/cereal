@@ -7,4 +7,6 @@ public interface GenericService <T, ID>{
     T save(T t);
 
     Collection<T> saveAll(Collection<T> t);
+
+    Collection<T> saveAll(T... t);
 }

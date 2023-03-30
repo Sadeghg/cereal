@@ -73,7 +73,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void saveAllProductsItem(){
+    public void saveAllProductsItems(){
         //given
         Company sony = new Company(50L, "SONY");
         Company apple = new Company(60L, "Apple");
@@ -114,7 +114,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void findAll(){
+    public void findAllCollection(){
         //given
         Company sony = new Company(50L, "SONY");
         Company apple = new Company(60L, "Apple");
@@ -173,7 +173,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void deleteAll(){
+    public void deleteAllCollection(){
         //given
 
         //when

@@ -13,7 +13,7 @@ public class ProductController {
         return null;
     }
 
-    @PostMapping
+    @PostMapping("save")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return null;
     }

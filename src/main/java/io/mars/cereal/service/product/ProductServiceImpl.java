@@ -5,6 +5,7 @@ import io.mars.cereal.model.Product;
 import io.mars.cereal.model.exception.ContentNotFound;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 @Service
@@ -21,5 +22,10 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Collection<Product> saveAll(Collection<Product> products) {
         return repository.saveAll(products);
+    }
+
+    @Override
+    public Collection<Product> saveAll(Product... t) {
+        return repository.saveAll(t);
     }
 }

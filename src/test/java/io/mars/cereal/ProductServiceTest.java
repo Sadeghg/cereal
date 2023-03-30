@@ -49,7 +49,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void saveAllProducts(){
+    public void saveAllProductsCollection(){
         //given
         Company sony = new Company(50L, "SONY");
         Company apple = new Company(60L, "Apple");
@@ -64,11 +64,35 @@ public class ProductServiceTest {
         Collection<Product> products = List.of(playStation, iphone);
 
         //when
-        when(repository.saveAll(any())).thenReturn(products);
+        when(repository.saveAll((Collection<Product>) any())).thenReturn(products);
 
         //then
         Collection<Product> resultList = productService.saveAll(products);
         verify(repository).saveAll(products);
+        assertEquals(resultList.size(), products.size());
+    }
+
+    @Test
+    public void saveAllProductsItem(){
+        //given
+        Company sony = new Company(50L, "SONY");
+        Company apple = new Company(60L, "Apple");
+
+        Map<String, String> playstationDetails =
+                Map.of("weight", "4 kg", "original", "yes", "power", "330", "color", "glacier white");
+        Map<String, String> iphoneDetails =
+                Map.of("weight", "200 grams", "original", "yes", "color", "rose gold");
+
+        Product playStation = new Product(20L, "PS5", 700D, sony, playstationDetails);
+        Product iphone = new Product(30L, "Iphone 12 PRO MAX", 1000D, apple, iphoneDetails);
+        Collection<Product> products = List.of(playStation, iphone);
+
+        //when
+        when(repository.saveAll(playStation, iphone)).thenReturn(products);
+
+        //then
+        Collection<Product> resultList = productService.saveAll(playStation, iphone);
+        verify(repository).saveAll(playStation, iphone);
         assertEquals(resultList.size(), products.size());
     }
 

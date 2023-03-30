@@ -39,4 +39,11 @@ public class ProductServiceImpl implements ProductService {
     public Collection<Product> findAll(Collection<Long> ids) {
         return repository.findAll(ids);
     }
+
+    @Override
+    public Collection<Product> findAll(Long... ids) {
+        return repository.findAll(ids);
+    }
+
+
 }

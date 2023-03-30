@@ -18,7 +18,8 @@ public class ProductController {
         return null;
     }
 
-    public ResponseEntity<Product> updateProduct(Long id, String name, Double price, String companyName) {
+    @PostMapping
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
         return null;
     }
 

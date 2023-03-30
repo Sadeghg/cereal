@@ -12,4 +12,6 @@ public interface GenericService <T, ID>{
 
     T findById(ID id);
 
+    Collection<T> findAll(Collection<ID> ids);
+
 }

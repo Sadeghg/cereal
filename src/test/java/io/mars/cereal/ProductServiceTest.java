@@ -151,14 +151,13 @@ public class ProductServiceTest {
         Product playStation = new Product(20L, "PS5", 700D, sony, playstationDetails);
         Product iphone = new Product(30L, "Iphone 12 PRO MAX", 1000D, apple, iphoneDetails);
         Collection<Product> products = List.of(playStation, iphone);
-        Collection<Long>ids = List.of(50L, 60L);
 
         //when
-        when(repository.findAll(ids)).thenReturn(products);
+        when(repository.findAll(50L, 60L)).thenReturn(products);
 
         //then
-        Collection<Product> resultList = productService.findAll(ids);
-        verify(repository).findAll(ids);
+        Collection<Product> resultList = productService.findAll(50L, 60L);
+        verify(repository).findAll(50L, 60L);
         assertEquals(resultList.size(), products.size());
     }
 

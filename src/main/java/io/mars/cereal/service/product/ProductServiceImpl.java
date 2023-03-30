@@ -5,6 +5,8 @@ import io.mars.cereal.model.Product;
 import io.mars.cereal.model.exception.ContentNotFound;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class ProductServiceImpl implements ProductService{
 
@@ -14,5 +16,10 @@ public class ProductServiceImpl implements ProductService{
     public Product save(Product product) {
         return repository.save(product)
                 .orElseThrow(() -> new ContentNotFound("no such product found"));
+    }
+
+    @Override
+    public Collection<Product> saveAll(Collection<Product> products) {
+        return repository.saveAll(products);
     }
 }

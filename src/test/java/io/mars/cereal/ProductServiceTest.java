@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -44,6 +46,30 @@ public class ProductServiceTest {
         verify(repository).save(playStation);
         assertEquals(result.getId(), playStation.getId());
         assertEquals(result.getDetails().size(), 3);
+    }
+
+    @Test
+    public void saveAllProducts(){
+        //given
+        Company sony = new Company(50L, "SONY");
+        Company apple = new Company(60L, "Apple");
+
+        Map<String, String> playstationDetails =
+                Map.of("weight", "4 kg", "original", "yes", "power", "330", "color", "glacier white");
+        Map<String, String> iphoneDetails =
+                Map.of("weight", "200 grams", "original", "yes", "color", "rose gold");
+
+        Product playStation = new Product(20L, "PS5", 700D, sony, playstationDetails);
+        Product iphone = new Product(30L, "Iphone 12 PRO MAX", 1000D, apple, iphoneDetails);
+        Collection<Product> products = List.of(playStation, iphone);
+
+        //when
+        when(repository.saveAll(any())).thenReturn(products);
+
+        //then
+        Collection<Product> resultList = productService.saveAll(products);
+        verify(repository).saveAll(products);
+        assertEquals(resultList.size(), products.size());
     }
 
 }

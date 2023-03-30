@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface ProductRepository {
 
     Optional<Product> save(Product product);
+
+    Optional<Product> findById(Long id);
 }

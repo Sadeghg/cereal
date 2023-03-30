@@ -6,6 +6,7 @@ import io.mars.cereal.model.Product;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,7 +27,7 @@ public class ProductRepositoryTest {
     @Mock
     private ProductRepository repository;
 
-    @BeforeAll
+    @BeforeEach
     public void setRepository(){
         Company lg = new Company("LG");
         Company sony = new Company("SONY");
@@ -58,5 +59,20 @@ public class ProductRepositoryTest {
         Optional<Product> saveResult = repository.save(product);
         assertTrue(saveResult.isPresent());
         assertEquals(saveResult.get().getName(), product.getName());
+    }
+
+    @Test
+    public void findById(){
+        //given
+        Product product = products.get(0);
+
+        //when
+        when(repository.findById(anyLong())).thenReturn(Optional.of(product));
+
+        //then
+        Optional<Product> result = repository.findById(anyLong());
+        assertTrue(result.isPresent());
+        assertEquals(result.get().getDetails().size() , 3);
+        assertEquals(result.get().getName(), product.getName());
     }
 }

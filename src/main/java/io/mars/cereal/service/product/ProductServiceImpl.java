@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     private ProductRepository repository;
 
@@ -33,5 +33,10 @@ public class ProductServiceImpl implements ProductService{
     public Product findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ContentNotFound("no such product found"));
+    }
+
+    @Override
+    public Collection<Product> findAll(Collection<Long> ids) {
+        return repository.findAll(ids);
     }
 }

@@ -113,4 +113,29 @@ public class ProductServiceTest {
         assertEquals(playStation.getId(), result.getId());
     }
 
+    @Test
+    public void findAll(){
+        //given
+        Company sony = new Company(50L, "SONY");
+        Company apple = new Company(60L, "Apple");
+
+        Map<String, String> playstationDetails =
+                Map.of("weight", "4 kg", "original", "yes", "power", "330", "color", "glacier white");
+        Map<String, String> iphoneDetails =
+                Map.of("weight", "200 grams", "original", "yes", "color", "rose gold");
+
+        Product playStation = new Product(20L, "PS5", 700D, sony, playstationDetails);
+        Product iphone = new Product(30L, "Iphone 12 PRO MAX", 1000D, apple, iphoneDetails);
+        Collection<Product> products = List.of(playStation, iphone);
+
+        //when
+        when(repository.findAll((Collection<Long>) any())).thenReturn(products);
+
+        //then
+        Collection<Product> resultList = productService.findAll(List.of(50L, 60L));
+        verify(productService).findAll(List.of(50L, 60L));
+        assertEquals(resultList.size(), products.size());
+    }
+
+
 }

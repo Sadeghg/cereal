@@ -17,4 +17,6 @@ public interface GenericService <T, ID>{
     Collection<T> findAll(ID... ids);
 
     void deleteAll(Collection<ID> ids);
+
+    void delete(ID id);
 }

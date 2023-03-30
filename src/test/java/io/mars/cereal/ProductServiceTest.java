@@ -96,4 +96,21 @@ public class ProductServiceTest {
         assertEquals(resultList.size(), products.size());
     }
 
+    @Test
+    public void findById(){
+        //given
+        Company sony = new Company(50L, "SONY");
+        Map<String, String> playstationDetails =
+                Map.of("weight", "4 kg", "power", "330", "color", "glacier white");
+        Product playStation = new Product(20L, "PS5", 700D, sony, playstationDetails);
+
+        //when
+        when(repository.findById(anyLong())).thenReturn(Optional.of(playStation));
+
+        //then
+        Product result = productService.findById(playStation.getId());
+        verify(repository).findById(playStation.getId());
+        assertEquals(playStation.getId(), result.getId());
+    }
+
 }

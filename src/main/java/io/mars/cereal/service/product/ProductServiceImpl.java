@@ -28,4 +28,10 @@ public class ProductServiceImpl implements ProductService{
     public Collection<Product> saveAll(Product... t) {
         return repository.saveAll(t);
     }
+
+    @Override
+    public Product findById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new ContentNotFound("no such product found"));
+    }
 }

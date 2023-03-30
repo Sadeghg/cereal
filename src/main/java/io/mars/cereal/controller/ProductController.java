@@ -18,7 +18,7 @@ public class ProductController {
         return null;
     }
 
-    @PostMapping
+    @PutMapping("update")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
         return null;
     }

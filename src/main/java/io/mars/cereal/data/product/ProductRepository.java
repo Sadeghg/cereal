@@ -21,5 +21,7 @@ public interface ProductRepository {
 
     void deleteById(Long id);
 
+    void deleteAll(Collection<Long> ids);
+
 
 }

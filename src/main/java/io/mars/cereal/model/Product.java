@@ -1,6 +1,7 @@
 package io.mars.cereal.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,14 +10,9 @@ import java.util.Map;
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
-    public Product(String name, Double price, Company company, Map<String, String> details){
-        this.name = name;
-        this.price = price;
-        this.company = company;
-        this.details = details;
-    }
     public Product(String name, Double price){
         this.name = name;
         this.price = price;

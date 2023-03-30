@@ -1,11 +1,19 @@
 package io.mars.cereal.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Company {
+
+    public Company(String name){
+        this.name = name;
+    }
 
     @Id
     @SequenceGenerator(name = "cuteSequence", sequenceName = "cuteSequence"
